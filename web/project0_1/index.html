@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Google
+        </title>
+        <link rel="stylesheet" href="style/styles.css">
+        <link rel="icon" href="images/google_icon.png">
+    </head>
+    <body>
+        <div class="option" id="switch">
+            <div class="search" id="search-image">
+            <input  type="submit" value="Search Image" onclick="switchPage('search_image.html')">
+            </div>
+            <script>
+                function switchPage(strPage) {
+                  location.replace(strPage)
+                }
+                </script>
+            <div class="search" id="advanced-search">
+            <input  type="submit" value="Advance Search"  onclick="switchPage('advanced_search.html')">
+            </div>
+            <div class="search" id="gmail">
+            <input id="gmail1" type="submit" value="Gmail" onclick="switchPage('https://gmail.com/')">
+            </div>
+
+        </div>
+        <div class="content" id="main">
+            <div class="image-container">
+                <img class="logo" id="google" src="images/google_logo.png" srcset="images/google_logo.png 75%, images/google_logo.png 50%, images/google_logo.png 25%">
+            </div>
+            <form action="https://www.google.com/search">
+                <input class="search_bar" type="text" name="q" maxlength="4048" type="text" jsaction="paste:puy29d" aria-autocomplete="both" aria-haspopup="false" autocapitalize="off" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="Tìm kiếm" value="" aria-label="Tìm kiếm">
+                <div class="group_button">
+                    <input class="search" type="submit" value="Search">
+                    <input class="search" type="submit" name="btnI" value="I'm Feeling Lucky!">
+                </div>
+            </form>
+
+        </div>
+    </body>
+</html>
