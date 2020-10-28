@@ -1,0 +1,12 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block body %}
+    <form action="{% url 'encyclopedia/newpage.html' %}" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input class="markdown" type="text">
+        <input class="submit-markdown" type="submit">
+    </form>
+    
+
+{% endblock %}

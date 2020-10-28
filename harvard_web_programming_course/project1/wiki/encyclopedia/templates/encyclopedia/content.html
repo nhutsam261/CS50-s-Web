@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+   
+    <div id="preview" style="word-wrap: break-word;">{{ entry }}</div>
+    <script>
+        var node = document.getElementById("preview");
+        document.getElementById("preview").innerHTML = markdown.toHTML(node.innerHTML);
+    </script>
+
+{% endblock %}
