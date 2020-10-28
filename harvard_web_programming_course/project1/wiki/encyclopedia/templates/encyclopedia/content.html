@@ -6,10 +6,12 @@
 
 {% block body %}
    
-    <div id="preview" style="word-wrap: break-word;">{{ entry }}</div>
+    <div id="content" >
+        {{ entry }}
+    </div>
     <script>
-        var node = document.getElementById("preview");
-        document.getElementById("preview").innerHTML = markdown.toHTML(node.innerHTML);
+        var node = document.getElementById("content")
+        document.getElementById("content").innerHTML = node.textContent
     </script>
 
 {% endblock %}
