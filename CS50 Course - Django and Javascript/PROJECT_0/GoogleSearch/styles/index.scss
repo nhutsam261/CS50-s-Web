@@ -1,0 +1,49 @@
+%row_flexbox{
+    display: flex;
+    flex-direction: row;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.item-0{
+    @extend %row_flexbox;
+    justify-content: flex-end;
+    height: 60px;
+}
+
+.item-0 > #gmail{
+    padding-right: 10px;
+}
+
+.item-1, .item-2{
+    @extend %row_flexbox;
+    justify-content: center;
+}
+
+
+.logo{
+    max-height: 92px;
+}
+
+.searchBar{
+    width: 572px;
+    margin: auto;
+}
+
+.input_field{
+    @extend %row_flexbox;
+    justify-content: center;
+    align-items: stretch;
+}
+
+input[type=text]{
+    width: 100%;
+}
+
+.buttonGroup{
+    @extend %row_flexbox;
+    justify-content: space-evenly;
+    padding-top: 18px;
+}
