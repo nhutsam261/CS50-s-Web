@@ -4,7 +4,7 @@ from django import forms
 class NewSearchForm(forms.Form):
     search = forms.CharField(label="Search",required= False,
     widget= forms.TextInput
-    (attrs={'placeholder':'Search Encyclopedia'}))
+    (attrs={'placeholder':'Searcp Encyclopedia'}))
 
 #new page
 class NewPageForm(forms.Form):

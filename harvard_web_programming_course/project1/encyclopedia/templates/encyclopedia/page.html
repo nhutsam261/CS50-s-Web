@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="display-4">{{ title }}</h1>
+    <hr>
+    <div id="html-content">
+        {{ content }}
+    </div>
+    <script>
+        var node = document.getElementById("html-content")
+        document.getElementById("html-content").innerHTML =  node.innerText
+    </script>
+    <hr>
+    <form action="{% url 'wiki:edit' %}" method="POST">
+        {% csrf_token %}
+        {% with pagename=title %}
+        <button class="btn btn-secondary" type="submit" name="edit" id="edit" value="{{pagename}}">Edit</button>
+        {% endwith %}
+    </form>
+
+{% endblock %}

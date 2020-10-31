@@ -4,29 +4,35 @@ from django.urls import reverse
 from django.core.files import File
 from . import util, forms
 from random import choice
-
+import markdown2
 
 form = forms.NewSearchForm()
 
 
 def index(request):
     entries = util.list_entries()
+    
 
     return render(request, "encyclopedia/index.html", {
         "entries": entries,
         "form" : form,
+        
     })
 
 def get_page(request, title):
 
     entry = util.get_entry(title)
+    markdowner = markdown2.Markdown()
+    md2html = markdowner.convert(entry)
+    
     if entry is None:
         return render(request, 'encyclopedia/error.html')
-
+    print(entry)
     return render(request, 'encyclopedia/titlepage.html',{
         "title": title,
         "entry": entry,
         "form": form,
+        'htmlContent': md2html,
 
     })
 
@@ -70,7 +76,7 @@ def new_page(request):
     else:
         create_form = forms.NewPageForm(request.POST)
         if create_form.is_valid():
-            title = create_form.cleaned_data['title']
+            title = create_form.cleaned_data['pagename']
             body = create_form.cleaned_data['body']
 
             entries = util.list_entries()
@@ -111,10 +117,11 @@ def save_page(request):
     if edit_form.is_valid():
         pagename = edit_form.cleaned_data['pagename']
         body = edit_form.cleaned_data['body']
-
+        print("debug01")
         savedPage = util.save_entry(pagename, body)
         return get_page(request, pagename)
     else:
+        print("debug02")
         return render(request, 'encyclopedia/edit_page.html',{
             'form': form,
             'edit_form':edit_form,

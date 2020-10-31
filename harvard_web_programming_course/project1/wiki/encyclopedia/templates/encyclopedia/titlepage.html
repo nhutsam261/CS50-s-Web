@@ -23,6 +23,15 @@
         <h1 class="display-4 text-secondary">{{title}}</h1>
 
     </form>
-    {{ content|markdown|safe }}
+    <div id="html-content">
+        {{ htmlContent }}
+    </div>
+    <script>
+        var node = document.getElementById("html-content")
+        document.getElementById("html-content").innerHTML =  node.innerText
+    </script>
+    
+    
+    
 
 {% endblock %}
