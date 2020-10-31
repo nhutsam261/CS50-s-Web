@@ -11,15 +11,31 @@
     @extend %row_flexbox;
     justify-content: flex-end;
     height: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
-.item-0 > #gmail{
+.item-0 > div{
     padding-right: 10px;
+}
+
+.item-0 a{
+    color: black;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.item-0 a:hover{
+    text-decoration: underline;
 }
 
 .item-1, .item-2{
     @extend %row_flexbox;
     justify-content: center;
+}
+.item-1{
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 
@@ -40,10 +56,60 @@
 
 input[type=text]{
     width: 100%;
+    border-radius: 4px;
+    border: 1px solid rgb(145, 132, 132);
+    height: 30px;
 }
 
 .buttonGroup{
     @extend %row_flexbox;
-    justify-content: space-evenly;
+    justify-content: center;
     padding-top: 18px;
+    gap: 10px;
 }
+
+
+input[type=submit]{
+    background-color: #f2f2f2;
+    border: 1px solid #f2f2f2;
+    width: 130px;
+    height: 36px;
+    cursor: pointer;
+}
+input[type=submit]:hover{
+    background-color: white;
+    border: 1px solid rgb(146, 130, 130);
+    border-radius: 4px;
+}
+
+// Advanced Search
+.pages_links{
+    @extend .item-0;
+}
+
+.input_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.input_container > div{
+    @extend %row_flexbox;
+    padding : 10px;
+    width: 50%;
+    
+}
+
+.input_container > div > div{
+    height: 30px;
+    font-size: small;
+    width: 16%;
+    padding-right: 10px;
+    word-wrap: break-word;
+}
+
+.AdvancedButtonGroup{
+    @extend %row_flexbox;
+    padding: 18px;
+
+}
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced Search</title>
+        <link rel="stylesheet" href="styles/index.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="pages_links">
+                <div id = "google_search_link">
+                    <a href="index.html">Google Search</a>
+                </div>
+                <div id="images_search_link">
+                    <a href="image_search.html">Advanced</a>
+                </div>
+
+            </div>
+
+            <!-- <div class="item-1">
+                <div class="logo">
+                    <img src="images/google_logo.png" width="272px" height="92px">
+                </div>
+            </div> -->
+
+            <div class="search_query_bars">
+                <form action="https://www.google.com/search" method="GET">
+                    <div class="input_container">
+                        <div class="input_field_1"> 
+                            <div>
+                                <label>all these words:</label>
+                            </div>
+                            <input type="text" name="as_q">
+                        </div>
+                        <div class="input_field_2"> 
+                            <div>
+                                <label>exact word or phrase:</label>
+                            </div>
+                            <input type="text" name="as_epq">
+                        </div>
+                        <div class="input_field_3"> 
+                            <div>
+                                <label>any of these words:</label>
+                            </div>
+                            <input type="text" name="as_oq">
+                        </div>
+                        <div class="input_field_4"> 
+                            <div>
+                                <label>none of these words:</label>
+                            </div>
+                            <input type="text" name="as_eq">
+                        </div>
+                    </div>
+
+                    <div class="AdvancedButtonGroup">
+                        <div id="search_button">
+                            <input type="submit" value="Google Search"> 
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
