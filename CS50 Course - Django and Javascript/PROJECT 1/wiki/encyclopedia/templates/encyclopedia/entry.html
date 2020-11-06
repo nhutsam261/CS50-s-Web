@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block body %}
+    <div id="html-content">
+        {{ entry }}
+    </div>
+
+    <div>
+        <nav>
+            <a href="{% url 'wiki:edit' title=title %}">Edit this entry</a>
+        </nav>
+    </div>
+
+    <script>
+        var node = document.getElementById("html-content")
+        document.getElementById("html-content").innerHTML =  node.innerText
+    </script>
+{% endblock %}
