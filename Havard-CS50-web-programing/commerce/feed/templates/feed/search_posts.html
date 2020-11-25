@@ -1,0 +1,180 @@
+{% extends "feed/layout.html" %} {% load static %} {% block cssfiles %} {% endblock cssfiles %} {% block notification %}
+<button id="nofi" type="button" class="nav-item btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-html="true" data-content="{% for nofi in notifications %} <p> {{ nofi }} </p> {% endfor %} <hr> {% for nofi in read %} <p> {{nofi}} </p> {% endfor %} ">
+    {% if countNofi %}
+    {{ countNofi }} Notifications
+    {% else %}
+    Notifications
+    {% endif %}
+</button> {% endblock notification %} {% block searchform %}
+<form class="nav-item form-inline my-2 my-lg-0 ml-5" action="{% url 'search_posts' %}" method="get">
+    <input name="p" type="text" placeholder="Search posts..">
+    <button class="btn btn-success my-2 my-sm-0 ml-4" type="submit">Search</button>
+</form>
+{% endblock searchform %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            {% if not posts %}
+            <br>
+            <h2><i>No posts match the tag provided!</i></h2>
+            {% endif %} {% for post in posts %}
+            <div class="card my-5">
+
+                <div class="card__title">
+                    <div class="icon">
+                        <a href="#"><i class="fa fa-arrow-left"></i></a>
+                    </div>
+                    {% if post.tags %}
+                    <h3>
+                        <form action="{% url 'search_posts' %}" method="get">
+                            <input name="p" type="hidden" value="{{ post.tags }}">
+                            <input id="searchButton{{ post.tags }}" style="display:none" type="submit">
+                            <label for="searchButton{{ post.tags }}" style="cursor: pointer;">{{ post.tags }}</label>
+                        </form>
+
+                    </h3>
+                    {% else %}
+                    <h3>
+                        <form action="{% url 'search_posts' %}" method="get">
+                            <input name="p" type="hidden" value="Category">
+                            <input id="searchButtonCategory" style="display:none" type="submit">
+                            <label for="searchButtonCategory" style="cursor: pointer;">Category</label>
+                        </form>
+                    </h3>
+                    {% endif %}
+                </div>
+                <div class="card__body row">
+                    <div class="half">
+                        <div class="featured_text row">
+                            <div class="col-sm-8">
+                                <h1>{{ post.nameOfListing }}</h1>
+                                {% if post.get_user_bid == False %}
+                                <p class="price">${{ post.bid }}</p>
+                                {% endif %}
+                            </div>
+                            {% if post.get_user_bid == True %} {% if post.status == 1%}
+                            <div class="userbid col-sm-4">
+                                <div class="featured_text">
+                                    TOP BID
+                                    <p class="price">${{ post.bid }}</p>
+                                </div>
+                                BY
+                                <a class="text-dark" href="{{ post.userBid.profile.get_absolute_url }}"><img src="{{ post.userBid.profile.image.url }}" class="rounded-circle" width="30" height="30" alt=""><b>{{ post.userBid }}</b></a>
+                            </div>
+                            {% else %} {% if post.get_user_bid == True %}
+                            <div class="userbid col-sm-4">
+                                <div class="featured_text">
+
+                                    <p class="price">WINNER ${{ post.bid }}</p>
+                                </div>
+                                BY
+                                <a class="text-dark" href="{{ post.userBid.profile.get_absolute_url }}"><img src="{{ post.userBid.profile.image.url }}" class="rounded-circle" width="30" height="30" alt=""><b>{{ post.userBid }}</b></a>
+                            </div>
+                            {% else %}
+                            <div class="userbid col-sm-4">
+                                <div class="featured_text">
+
+                                    <p class="price">NO USER BID MORE THAN - ${{ post.bid }}</p>
+                                </div>
+
+                            </div>
+                            {% endif %} {% endif %} {% endif %}
+                        </div>
+                        <div class="image">
+                            <a href="{% url 'post-detail' post.id %}"><img class="card-img-top" src="{{ post.pic.url }}" alt=""></a>
+                        </div>
+                    </div>
+                    {% if post.status == 1%}
+                    <div class="half">
+                        <div class="description">
+                            <p class="card-text text-dark">{{ post.description }}</p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="half">
+                        <div class="description">
+                            <p class="card-text text-dark">{{ post.description }}</p>
+                        </div>
+                        <div class="closed" style=" font-family: 'Montserrat', 'sans-serif';
+                        font-weight: 600;
+                        color: red;
+                        position: absolute;
+                        bottom: 200px;
+                        right: 20px;
+                        -webkit-transform: rotate(30deg);
+                        font-size: 4rem;">
+                            <h1 style="font-size: 10rem;">CLOSED</h1>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+                <div class="card__footer">
+                    <div class="recommend">
+                        <p>
+                            Listed by
+                            <a href="{{ post.user.profile.get_absolute_url }}"><img src="{{ post.user.profile.image.url }}" class="rounded-circle" width="30" height="30" alt=""></a>
+                        </p>
+
+                        <h3>
+                            <a class="text-dark" href="{{ post.user.profile.get_absolute_url }}"><b>{{ post.user }}</b></a>
+                        </h3>
+                        <br><small class="text-muted">Posted on {{ post.date_posted }}</small>
+                    </div>
+                    <div id='priceForBid'>
+
+                    </div>
+                    {% if post.status == 1%}
+                    <div class="action">
+                        <form action="{% url 'post-detail' post.id %}">
+                            <button type="submit">Bid Now</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="card-footer">
+                    <button type="button" class="btn btn-secondary" data-container="body" data-html="true" data-toggle="popover" data-placement="left" data-content="{% for user in post.likes.all %} <p> <a href={{ user.user.profile.get_absolute_url }}> {{ user.user }} </a> </p> {% endfor %}">
+                        {{post.likes.count}} likes
+                      </button>
+
+                    <button class="btn btn-white mr-3 like" id="{{ post.id }}">
+                        
+                            <a href="{% url 'post-like' %}" style="color:red;" id="likebtn{{ post.id }}"> Unlike</a>
+                      </button> {% if post.status == 1%}
+                    <a class="btn btn-outline-info" href="{% url 'post-detail' post.id %}">Comments | {{ post.details.count }}</a> {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %} {% block jsfiles %}
+<script>
+    $(function() {
+        // Enables popover
+        $("[data-toggle=popover]").popover();
+    });
+    $(".like").click(function(e) {
+        var id = this.id;
+        var href = $('.like').find('a').attr('href');
+        e.preventDefault();
+
+        $.ajax({
+            url: href,
+            data: {
+                'likeId': id
+            },
+            success: function(response) {
+                if (response.liked) {
+                    $('#likebtn' + id).html("Unlike");
+                    $('#likebtn' + id).css("color", "red")
+                } else {
+                    $('#likebtn' + id).html("Like");
+                    $('#likebtn' + id).css("color", "green")
+                }
+            }
+        })
+    });
+</script>
+{% endblock jsfiles %}
