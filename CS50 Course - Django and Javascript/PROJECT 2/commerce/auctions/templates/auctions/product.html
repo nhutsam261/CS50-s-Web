@@ -1,0 +1,124 @@
+{% extends "accounts/layout.html" %}
+{% load static %}
+{% block cssfiles %}
+    <link href="{% static 'auctions/style.css' %}" rel="stylesheet" type="text/css" />
+{% endblock cssfiles %}
+
+
+{% block content %}
+<h2 style="margin-bottom: 12px; padding-left: 15px;">
+    Listing: {{auction.title}}
+    {% if auction.status == 'active' %}
+    <span class="badge badge-success">Active</span>
+    {% else %}
+    <span class="badge badge-danger">Closed</span>
+    {% endif %}
+</h2>
+
+<div class="product-container">
+    <div class="col-6">
+        <img src="{{ auction.image.url }}">
+    </div>
+    <div class="info-container col-6">
+        <div>
+            {% if max_bid %}
+            <h4>
+                Current Price: <span>${{ max_bid.price }}</span>
+            </h4>
+            {% else %}
+            <h4>
+                Current Price: <span>${{ auction.startBid }}</span>
+            </h4>
+            {% endif %}
+        </div>
+        <div><span>{{ bids_for_auction.count }} bid(s) so far.</span></div>
+        <div>
+            {% if max_bid.createdBy == request.user %}
+            <span>Your bid is current bid.</span>
+            {% endif %}
+        </div>
+
+        {% if request.user.is_authenticated and auction.status == 'active' %}
+        <div>
+            <form action="{% url 'listing' num_id=auction.id %}" method="POST" id="bid_form">
+                {% csrf_token %}
+
+                {% for error in bid_form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+
+                {% for field in bid_form %}
+                    {{ field }}
+                {% endfor %}
+                <input type="submit" class="btn btn-primary" value="Place Bid" >
+            </form>
+        </div>
+        {% endif %}
+
+
+        {% if request.user == auction.createdBy and auction.status == 'active' %}
+        <div>
+            <form action="{% url 'close' num_id=auction.id %}" method="POST" id="close_form">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Close this listing">
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="col-9">
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab"
+                aria-controls="nav-description" aria-selected="true">Description</a>
+            <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab"
+                aria-controls="nav-details" aria-selected="false">Details</a>
+        </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane container active" id="nav-description" role="tabpanel" 
+                aria-labelledby="nav-description-tab" style="margin-top: 20px;">
+            {{ auction.description }}
+        </div>
+        <div class="tab-pane container fade" id="nav-details" role="tabpanel" 
+                aria-labelledby="nav-details-tab" style="margin-top: 20px;">
+            <ul>
+                <li>Listed by: {{ auction.createdBy }}</li>
+                <li>Category: {{ auction.category }}</li>
+                {% if auction.status == 'closed' %}
+                    <li>Winner: {{ max_bid.createdBy }}</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="col-md-6" style="padding-left: 20px;">
+    <h3><small class="float-right">{{ comments.count }} comments</small> Comments </h3>
+    {% for cmt in comments %}
+    <div class="comments" style="padding: 10px; border-bottom: 1px dotted #ccc;">
+        <p class="font-weight-bold">
+            {{ cmt.createdBy }}
+            <span class=" text-muted font-weight-normal">
+                {{ cmt.createdOn }}
+            </span>
+        </p>
+        {{ cmt.content | linebreaks }}
+    </div>
+    {% endfor %}
+
+    <form action="{% url 'comment' num_id=auction.id %}" method="POST">
+        {% csrf_token %}
+        {{comment_form.as_p}}
+        <input type="submit" class="btn btn-secondary" value="Submit">
+
+    </form>
+</div>
+{% endblock content %}

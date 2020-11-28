@@ -1,0 +1,28 @@
+{% extends "accounts/layout.html" %} {% load static %}
+
+{% block cssfiles %}
+    <link href="{% static 'auctions/style.css' %}" rel="stylesheet" type="text/css" />
+{% endblock cssfiles %}
+
+{% block content %}
+    <h2>Closed Listings</h2>
+
+    <div class="listings-container">
+        {% for auction in auctions %}
+            {% if auction.status == 'closed' %}
+            <div class="listing-group">
+                <div class="img-display">
+                    <img src="{{ auction.image.url }}">
+                </div>
+                <div class="info-display" >
+                    <div class="title"> <a href="{% url 'listing' num_id=auction.id %}"><h3>{{ auction.title }}</h3></a></div>
+                    <div class="startBid">Price: {{ auction.startBid }}$</div>
+                    <div class="category">Category: {{ auction.category }}</div>
+                    <div class="createdBy">Created by <b>{{ auction.createdBy }}</b></div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+{% endblock content %}
