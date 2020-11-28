@@ -1,4 +1,4 @@
-{% extends "accounts/layout.html" %} {% load static %}
+{% extends "accounts/layout.html" %} {% load static %} {% load custom_filters %}
 
 {% block cssfiles %}
     <link href="{% static 'auctions/style.css' %}" rel="stylesheet" type="text/css" />
@@ -7,22 +7,44 @@
 {% block content %}
     <h2>Closed Listings</h2>
 
-    <div class="listings-container">
+    <div class="row">
         {% for auction in auctions %}
-            {% if auction.status == 'closed' %}
-            <div class="listing-group">
-                <div class="img-display">
-                    <img src="{{ auction.image.url }}">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                
+                <a href="{% url 'listing' num_id=auction.id %}">
+                    <img class="card-img-top" src="{{ auction.image.url }}" alt="" width="330" height="190">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{% url 'listing' num_id=auction.id %}">{{ auction.title }}</a>
+                        {% if auction.status == 'active' %}
+                        <span class="badge badge-success">Active</span>
+                        {% else %}
+                        <span class="badge badge-danger">Closed</span>
+                        {% endif %}
+                    </h4>
+                    
+                    <h5>Start price: ${{ auction.startBid }}</h5>
+                    <h5>
+                        Current Bid: 
+                        {% if max_bids_dict|lookup:auction %}
+                            ${{ max_bids_dict|lookup:auction }}
+                        {% else %}
+                            <span class="font-italic">No bid yet</span>
+                        {% endif %}
+                    </h5>
+                    <p class="card-text text-truncate" style="overflow:hidden;text-overflow:ellipsis;">
+                        {{ auction.description }}
+                    </p>
                 </div>
-                <div class="info-display" >
-                    <div class="title"> <a href="{% url 'listing' num_id=auction.id %}"><h3>{{ auction.title }}</h3></a></div>
-                    <div class="startBid">Price: {{ auction.startBid }}$</div>
-                    <div class="category">Category: {{ auction.category }}</div>
-                    <div class="createdBy">Created by <b>{{ auction.createdBy }}</b></div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        Created on {{ auction.createdOn }} by 
+                        <a href="{% url 'profile_view' auction.createdBy.profile.slug %}"><b> {{ auction.createdBy.username }}</b></a>
+                    </small>
                 </div>
             </div>
-            {% endif %}
+        </div>
         {% endfor %}
-
-    </div>
 {% endblock content %}

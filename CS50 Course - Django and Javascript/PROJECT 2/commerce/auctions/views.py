@@ -85,6 +85,10 @@ def listing(request, num_id):
 # For closing a listing
 def close(request, num_id = -1):
     closed_auctions = Auction.objects.filter(status='closed')
+
+    max_bids_dict = {}
+    for auction in closed_auctions:
+       max_bids_dict[auction] = Bid.objects.filter(forAuction=auction).order_by('-price')[0].price if Bid.objects.filter(forAuction=auction).order_by('-price') else None
     
     if num_id != -1:
         auctionToBeClosed = Auction.objects.get(pk=num_id)
@@ -94,7 +98,9 @@ def close(request, num_id = -1):
 
 
     return render(request, "auctions/closed.html", {
-        "auctions": closed_auctions
+        "auctions": closed_auctions,
+        "max_bids_dict": max_bids_dict
+
     })
 
 
