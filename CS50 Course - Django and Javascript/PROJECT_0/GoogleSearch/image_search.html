@@ -2,39 +2,37 @@
 <html lang="en">
     <head>
         <title>Google Image Search</title>
-        <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <div class="container">
-            <div class="item-0">
-                <div id = "google_search_link">
-                    <a href="index.html">Google Search</a>
-                </div>
-                <div id="advanced_search_link">
-                    <a href="advanced_search.html">Advanced</a>
-                </div>
-
+        <div class="item-0">
+            <div id = "google_search_link">
+                <a href="index.html">Google Search</a>
             </div>
+            <div id="advanced_search_link">
+                <a href="advanced_search.html">Advanced</a>
+            </div>
+        </div>
 
+        <div class="container">
             <div class="item-1">
                 <div class="logo">
                     <img src="images/google_logo.png" width="272px" height="92px">
+                    <i class="fa fa-camera" style="font-size:48px"></i>
                 </div>
             </div>
 
             <div class="item-2">
                 <div class="searchBar">
                     <form action="https://www.google.com/images" method="GET">
-                        <div class="input_field"> 
-                                <input type="text" name="q">
+                        <div class="form-group has-search">
+                                <span class="fa fa-search form-control-feedback"></span> 
+                                <input type="text" class="form-control" name="q" >
                         </div>
                         <div class="buttonGroup">
-                            <div id="search_button">
-                                <input type="submit" value="Google Search"> 
-                            </div>
-                            <div id="support_button">
-                                <input type="submit" value="I'm feeling lucky"> 
-                            </div>
+                            <button type="submit" class="btn btn-light">Google Search</button> 
                         </div>
                     </form>
                 </div>

@@ -60,3 +60,7 @@ img{
 .info-container div{
     margin-bottom: 20px;
 }
+
+.single-auction .add-to-watchlist{
+    /* visibility: hidden; */
+}

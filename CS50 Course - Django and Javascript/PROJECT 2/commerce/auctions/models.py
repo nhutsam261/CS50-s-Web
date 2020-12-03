@@ -13,7 +13,6 @@ class Auction(models.Model):
         ('closed', 'closed')
     ]
 
-
     title = models.CharField(max_length=128)
     description = models.CharField(max_length=512)
     startBid = models.PositiveIntegerField()
@@ -46,3 +45,9 @@ class Comment(models.Model):
     content = models.TextField()
     createdBy = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="comments")
     createdOn = models.DateTimeField(auto_now_add=True)
+
+class Watchlist(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    listings = models.ManyToManyField(Auction, blank=True)
+
+

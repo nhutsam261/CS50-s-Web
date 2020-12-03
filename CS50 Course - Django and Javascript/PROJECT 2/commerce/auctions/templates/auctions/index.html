@@ -12,8 +12,7 @@
     <div class="row">
         {% for auction in auctions %}
         <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-                
+            <div class="card h-100 single-auction">  
                 <a href="{% url 'listing' num_id=auction.id %}">
                     <img class="card-img-top" src="{{ auction.image.url }}" alt="" width="330" height="190">
                 </a>
@@ -31,7 +30,9 @@
                     <h5>
                         Current Bid: 
                         {% if max_bids_dict|lookup:auction %}
-                            ${{ max_bids_dict|lookup:auction}}
+                            {% with max_bid=max_bids_dict|lookup:auction %}
+                                ${{ max_bid.price}}
+                            {% endwith %}
                         {% else %}
                             <span class="font-italic">No bid yet</span>
                         {% endif %}
@@ -41,6 +42,20 @@
                     </p>
                 </div>
                 <div class="card-footer">
+                    <div class="add-to-watchlist">
+                        {% if auction not in watchlist.listings.all %}
+                        <button type="submit" class="btn btn-secondary" 
+                            onclick="location.href=`{% url 'watchlist' auction.id %}`" 
+                            name="watchlist-btn" >
+                            Add to watchlist
+                        </button>
+                        {% else %}
+                        <button type="button" class="btn btn-secondary" 
+                            name="watchlist-btn" disabled>
+                            Add to watchlist
+                        </button>
+                        {% endif %}
+                    </div>
                     <small class="text-muted">
                         Created on {{ auction.createdOn }} by 
                         <a href="{% url 'profile_view' auction.createdBy.profile.slug %}"><b> {{ auction.createdBy.username }}</b></a>

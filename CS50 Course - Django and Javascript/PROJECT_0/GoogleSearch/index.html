@@ -2,28 +2,29 @@
 <html lang="en">
     <head>
         <title>Google Search</title>
-        <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-                document.querySelector(".input_field input[name='q']").value = "";
+                document.querySelector(".form-group input[name='q']").value = "";
             });
         </script>
     </head>
     <body>
-        <div class="container">
-            <div class="item-0">
-                <div id="gmail_link">
-                    <a href="https://mail.google.com/">Gmail</a>
-                </div>
-                <div id = "images_search_link">
-                    <a href="image_search.html">Images</a>
-                </div>
-                <div id="advanced_search_link">
-                    <a href="advanced_search.html">Advanced</a>
-                </div>
-
+        <div class="item-0">
+            <div id="gmail_link">
+                <a href="https://mail.google.com/">Gmail</a>
             </div>
+            <div id = "images_search_link">
+                <a href="image_search.html">Images</a>
+            </div>
+            <div id="advanced_search_link">
+                <a href="advanced_search.html">Advanced</a>
+            </div>
+        </div>
 
+        <div class="container">
             <div class="item-1">
                 <div class="logo">
                     <img src="images/google_logo.png" width="272px" height="92px">
@@ -33,16 +34,13 @@
             <div class="item-2">
                 <div class="searchBar">
                     <form action="https://google.com/search" method="GET">
-                        <div class="input_field"> 
-                                <input type="text" name="q" >
+                        <div class="form-group has-search">
+                                <span class="fa fa-search form-control-feedback"></span> 
+                                <input type="text" class="form-control" name="q" >
                         </div>
                         <div class="buttonGroup">
-                            <div id="search_button">
-                                <input type="submit" value="Google Search"> 
-                            </div>
-                            <div id="support_button">
-                                <input type="submit" value="I'm feeling lucky"> 
-                            </div>
+                                <button type="submit" class="btn btn-light">Google Search</button> 
+                                <button type="submit" class="btn btn-light" name="btnI">I'm feeling lucky</button> 
                         </div>
                     </form>
                 </div>

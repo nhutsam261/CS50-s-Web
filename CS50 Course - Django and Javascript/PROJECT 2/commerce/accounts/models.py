@@ -6,11 +6,13 @@ from django.contrib.auth.models import AbstractUser
 
 from django.conf import settings
 from autoslug import AutoSlugField
+from auctions.models import Watchlist
 
 # Create your models here.
 
+
 class User(AbstractUser):
-    pass
+	pass
 
 
 class Profile(models.Model):
@@ -27,14 +29,15 @@ class Profile(models.Model):
 		return "/accounts/user/{}".format(self.slug)
 
 
-# make a profile as soon as we create the user 
+# make a profile as soon as we create the user
 def post_save_user_model_receiver(sender, instance, created, *args, **kwargs):
-    if created:
-        try:
-            Profile.objects.create(user=instance)
-        except:
-            pass
-
+	if created:
+		try:
+			Profile.objects.create(user=instance)
+			Watchlist.objects.create(user=instance)
+		except:
+			pass
+        
 post_save.connect(post_save_user_model_receiver, sender=User)
 
 

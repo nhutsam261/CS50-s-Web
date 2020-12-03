@@ -27,18 +27,41 @@
                     
                     <h5>Start price: ${{ auction.startBid }}</h5>
                     <h5>
-                        Current Bid: 
+                        Bid: 
                         {% if max_bids_dict|lookup:auction %}
-                            ${{ max_bids_dict|lookup:auction }}
+                            {% with max_bid=max_bids_dict|lookup:auction %}
+                                ${{ max_bid.price}}
+                            {% endwith %}
                         {% else %}
                             <span class="font-italic">No bid yet</span>
                         {% endif %}
+                    </h5>
+                    <h5>
+                        Winner: <a href="#"><b>
+                            {% with max_bid=max_bids_dict|lookup:auction %}
+                                {{ max_bid.createdBy}}
+                            {% endwith %}
+                        </b></a>
                     </h5>
                     <p class="card-text text-truncate" style="overflow:hidden;text-overflow:ellipsis;">
                         {{ auction.description }}
                     </p>
                 </div>
                 <div class="card-footer">
+                    <div class="add-to-watchlist">
+                        {% if auction not in watchlist.listings.all %}
+                        <button type="submit" class="btn btn-secondary" 
+                            onclick="location.href=`{% url 'watchlist' auction.id %}`" 
+                            name="watchlist-btn" >
+                            Add to watchlist
+                        </button>
+                        {% else %}
+                        <button type="button" class="btn btn-secondary" 
+                            name="watchlist-btn" disabled>
+                            Add to watchlist
+                        </button>
+                        {% endif %}
+                    </div>
                     <small class="text-muted">
                         Created on {{ auction.createdOn }} by 
                         <a href="{% url 'profile_view' auction.createdBy.profile.slug %}"><b> {{ auction.createdBy.username }}</b></a>
