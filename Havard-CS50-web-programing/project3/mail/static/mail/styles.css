@@ -1,0 +1,8 @@
+textarea {
+    min-height: 400px;
+}
+
+.btn-group button {
+    display: inline-block;
+    margin: 5px;
+}
