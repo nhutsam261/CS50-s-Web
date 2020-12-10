@@ -1,0 +1,11 @@
+textarea {
+    min-height: 400px;
+}
+
+.read:hover, .unread:hover{
+    background-color: rgba(54, 61, 77, 0.137);
+}
+
+.read{
+    background-color: rgba(216, 198, 198, 0.685);
+}

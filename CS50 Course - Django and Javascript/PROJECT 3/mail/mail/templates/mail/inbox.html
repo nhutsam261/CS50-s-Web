@@ -1,0 +1,57 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="container ml-0">
+<div class="row">
+<div class="wrapper pl-0 col-3">
+    <!-- Sidebar -->
+    <nav class="nav flex-column nav-pills" id="sidebar" aria-orientation="vertical" role="tablist">
+        <a class="nav-link active" role="tab" data-toggle="pill" id="inbox" aria-selected="true" href="#">Inbox</a>
+        <a class="nav-link" role="tab" data-toggle="pill" id="compose" aria-selected="false" href="#1">Compose</a>
+        <a class="nav-link" role="tab" data-toggle="pill" id="sent" aria-selected="false" href="#2">Sent</a>
+        <a class="nav-link" role="tab" data-toggle="pill" id="archived" aria-selected="false" href="#3">Archived</a>
+        <a class="nav-link" role="tab" href="{% url 'logout' %}">Log Out</a>
+    </nav>
+</div>
+
+<!-- Page Content -->
+<div id="content" class="col-9">
+    <h3>{{ request.user.email }}</h3>
+    <div id="emails-view">
+        <h3 id="mailbox-header"></h3>
+        
+    </div>
+
+    <div id="compose-view">
+        <h3>New Email</h3>
+        <form id="compose-form" method="POST" action="{% url 'compose' %}">
+            <div class="form-group">
+                From: <input disabled class="form-control" value="{{ request.user.email }}">
+            </div>
+            <div class="form-group">
+                To: <input id="compose-recipients" class="form-control">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="compose-subject" placeholder="Subject">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+            </div>
+            <button id="submit-btn" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'mail/inbox.js' %}"></script>
+<script src="{% static 'mail/compose.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+{% endblock %}
+
+

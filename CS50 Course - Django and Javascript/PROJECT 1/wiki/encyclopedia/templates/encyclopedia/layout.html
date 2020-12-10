@@ -17,6 +17,7 @@
                     <!-- <input class="search" type="text" name="q" placeholder="Search Encyclopedia"> -->
                     {% csrf_token %}
                     {{ form }}
+                    <input type="submit" value="Search" style="margin-top: 10px; margin-bottom: 5px;">
                 </form>
                 <div>
                     <a href="{% url 'wiki:index' %}">Home</a>

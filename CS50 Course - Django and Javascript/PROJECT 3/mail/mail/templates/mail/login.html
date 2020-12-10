@@ -1,0 +1,55 @@
+{% extends "mail/layout.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div class="container">
+<br />
+
+{% if messages %}
+  {% for msg in messages %}       
+    <div class="alert alert-success" role="alert">
+      {{msg.message}}
+    </div>
+  {% endfor %}
+{% endif %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center"><b>Sign In</b></h5>
+          <form class="form-signin" method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+              <br />
+              {{ login_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+              <button
+                class="btn btn-lg btn-primary btn-block text-uppercase"
+                type="submit"
+              >
+                Login</button
+              ><br /><br />
+              <a
+                class="btn btn-lg btn-warning btn-block text-uppercase"
+                href="#"
+                >Forgot Password?</a
+              >
+            </div>
+            <small
+              ><p class="text-center">
+                Not registered yet!
+                <a href="{% url 'register' %}"><b>Register Now!</b></a>
+              </p></small
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

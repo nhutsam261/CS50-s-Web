@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django.urls import reverse
 
 from markdown2 import Markdown
@@ -27,7 +27,7 @@ def entry(request, title):
             "form": form.SearchForm(),
             "entry": content_html
         })
-    return HttpResponse("NONE")
+    return HttpResponseNotFound("<h1>Page not found</h1>")
 
 
 def search(request):
@@ -86,7 +86,7 @@ def edit(request, title):
         if f.is_valid():
             content = f.cleaned_data['content']
             util.save_entry(title, content)
-            return HttpResponseRedirect(reverse("wiki:index"))
+            return HttpResponseRedirect(reverse("wiki:entry", args=[title]))
         else: return HttpResponse("Error")
 
 
