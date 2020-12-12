@@ -13,7 +13,7 @@
             <div class="card h-100">
                 
                 <a href="{% url 'listing' num_id=auction.id %}">
-                    <img class="card-img-top" src="{{ auction.image.url }}" alt="" width="330" height="190">
+                    <img class="card-img-top" src="{{ auction.image.url }}" alt="" width="330" height="300">
                 </a>
                 <div class="card-body">
                     <h4 class="card-title">
@@ -27,7 +27,7 @@
                     
                     <h5>Start price: ${{ auction.startBid }}</h5>
                     <h5>
-                        Bid: 
+                        Final Bid: 
                         {% if max_bids_dict|lookup:auction %}
                             {% with max_bid=max_bids_dict|lookup:auction %}
                                 ${{ max_bid.price}}
@@ -37,11 +37,12 @@
                         {% endif %}
                     </h5>
                     <h5>
-                        Winner: <a href="#"><b>
-                            {% with max_bid=max_bids_dict|lookup:auction %}
+                        Winner: 
+                        {% with max_bid=max_bids_dict|lookup:auction %}
+                            <a href="{{ max_bid.createdBy.profile.get_absolute_url }}"><b>
                                 {{ max_bid.createdBy}}
-                            {% endwith %}
-                        </b></a>
+                            </b></a>
+                        {% endwith %}
                     </h5>
                     <p class="card-text text-truncate" style="overflow:hidden;text-overflow:ellipsis;">
                         {{ auction.description }}

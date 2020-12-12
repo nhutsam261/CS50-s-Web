@@ -21,6 +21,10 @@
     </div>
     <div class="info-container col-6">
         <div>
+            <h4>
+                Start Price:  <span>${{ auction.startBid }}</span>
+            </h4>
+            </h4>
             {% if max_bid %}
             <h4>
                 Current Price: <span>${{ max_bid.price }}</span>
@@ -31,12 +35,24 @@
             </h4>
             {% endif %}
         </div>
+        {% if auction.status == 'active' %}
         <div><span>{{ bids_for_auction.count }} bid(s) so far.</span></div>
         <div>
             {% if max_bid.createdBy == request.user %}
             <span>Your bid is current bid.</span>
             {% endif %}
         </div>
+        {% endif %}
+
+        {% if auction.status == 'closed' %}
+        <div class="alert alert-primary">
+            {% if max_bid.createdBy == request.user %}
+                <strong>You have won this auction </strong>
+            {% else %}
+                <strong>{{max_bid.createdBy}} have won this auction </strong>
+            {% endif %}
+        </div>
+        {% endif %}
 
         {% if request.user.is_authenticated and auction.status == 'active' %}
         <div>
@@ -48,6 +64,14 @@
                         <strong>{{ error|escape }}</strong>
                     </div>
                 {% endfor %}
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success">
+                            <strong>{{ message|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
 
                 {% for field in bid_form %}
                     {{ field }}
@@ -89,7 +113,7 @@
                 aria-labelledby="nav-details-tab" style="margin-top: 20px;">
             <ul>
                 <li>Listed by: {{ auction.createdBy }}</li>
-                <li>Category: {{ auction.category }}</li>
+                <li>Category: <a href="{% url 'category' auction.category %}">{{ auction.category }}</a></li>
                 {% if auction.status == 'closed' %}
                     <li>Winner: {{ max_bid.createdBy }}</li>
                 {% endif %}

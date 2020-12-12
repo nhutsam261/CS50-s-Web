@@ -5,10 +5,10 @@
 
 
 {% block content %}
-<h2>Watchlist</h2>
+<h2>Category</h2>
 <div class="col-lg-8">
     <div class="pt-4">
-        {% for auction in watchlist.listings.all %}
+        {% for auction in auctions %}
         <div class="row mb-3">
             <div class="col-md-5 col-lg-3 col-xl-3">
                 <img class="w-75" height="100" src="{{ auction.image.url }}" alt="Sample">
@@ -27,7 +27,12 @@
                         </h5>
                         <p class="mb-3 text-muted text-uppercase small">Start price: ${{ auction.startBid }}</p>
                         <p class="mb-3 text-muted text-uppercase small">
-                            {% if auction.status == 'active' %}
+                            {% if auction.status == 'closed' %}
+                                Final Bid:
+                                {% with max_bid=max_bids_dict|lookup:auction %}
+                                    ${{ max_bid.price}}
+                                {% endwith %}
+                            {% else %}
                                 Current Bid:
                                 {% if max_bids_dict|lookup:auction %}
                                     {% with max_bid=max_bids_dict|lookup:auction %}
@@ -36,11 +41,6 @@
                                 {% else %}
                                     <span class="font-italic">No bid yet</span>
                                 {% endif %}
-                            {% else %}
-                                Final Bid:
-                                {% with max_bid=max_bids_dict|lookup:auction %}
-                                    ${{ max_bid.price}}
-                                {% endwith %}
                             {% endif %}
                         </p>
 
@@ -54,13 +54,6 @@
                                 {% endwith %}
                         </p>
                         {% endif %}
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                              <a href="{% url 'remove_from_watchlist' auction.id %}" type="button" class="card-link-secondary small text-uppercase mr-3"><i
-                                  class="fa fa-trash mr-1"></i> Remove from watchlist </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

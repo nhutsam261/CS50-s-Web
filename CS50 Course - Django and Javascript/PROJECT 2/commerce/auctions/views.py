@@ -6,9 +6,11 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .form import AuctionForm, BidForm, CommentForm
+from django.contrib import messages
+
 
 from .models import Auction, Bid, Comment, Watchlist
-from django.db.models import Max
+from django.db.models import Max, Count
 from collections import defaultdict
 
 
@@ -58,6 +60,7 @@ def listing(request, num_id):
         f = BidForm(request.POST, instance=newBid)
         if f.is_valid():
             bid = f.save()
+            messages.success(request, "Your bid placed succesfully")
             return HttpResponseRedirect(reverse("listing", args=[num_id]))
         else:
             return render(request, "auctions/product.html", {
@@ -140,5 +143,26 @@ def remove_from_watchlist(request, num_id):
         watchlist = Watchlist.objects.filter(user=request.user).first()
         watchlist.listings.remove(Auction.objects.get(id=num_id))
     return HttpResponseRedirect(reverse("watchlist_show"))
+
+
+
+def categories_page(request):
+    items = Auction.objects.values('category').annotate(total=Count('id')).order_by()
+
+    return render(request, "auctions/categories_page.html", {
+        "categories": items
+    })
+
+
+def category(request, category):
+    auctions = Auction.objects.filter(category=category)
+    max_bids_dict = {}
+    for auction in auctions:
+       max_bids_dict[auction] = Bid.objects.filter(forAuction=auction).order_by('-price')[0] if Bid.objects.filter(forAuction=auction).order_by('-price') else None
+
+    return render(request, "auctions/category.html", {
+        "auctions": auctions,
+        "max_bids_dict": max_bids_dict,
+    })
 
     
