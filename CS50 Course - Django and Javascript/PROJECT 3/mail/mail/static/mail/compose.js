@@ -18,7 +18,7 @@ function send_email(event){
         console.log(result);
         if (!result.error){
             alert(`${result.message}`);
-            load_mailbox("sent");
+            document.querySelector('#sent').click();
         }
         else{
             alert(`${result.error}`);

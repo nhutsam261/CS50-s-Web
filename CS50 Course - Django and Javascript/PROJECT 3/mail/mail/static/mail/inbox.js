@@ -62,7 +62,7 @@ function load_mailbox(mailbox) {
       cell2.className = "col-4";
       cell3.className = "col-4";
       
-      var text1 = document.createTextNode(element.recipients);
+      var text1 = document.createTextNode(element.sender);
       var text2 = document.createTextNode(element.subject);
       var text3 = document.createTextNode(element.timestamp);
 
@@ -144,8 +144,11 @@ function reply_mail(sender, subject, body, timestamp){
   if (subject.search('Re:') == -1){
     document.querySelector('#compose-subject').value = `Re: ${subject}`;
   }
+  else{
+    document.querySelector('#compose-subject').value = `${subject}`;
+  }
 
-  document.querySelector('#compose-body').value = `On ${timestamp}, ${sender} wrote:\n${body}\n\n`;
+  document.querySelector('#compose-body').value = `On ${timestamp}, ${sender} wrote:\n${body}\n`;
 }
 
 
