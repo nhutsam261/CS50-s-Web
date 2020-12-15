@@ -1,0 +1,85 @@
+{% extends "network/layout.html" %} {% block body %}
+<div class="container">
+    <h1> ALL POSTS </h1>
+    <div id='message'></div>
+    {% if user.is_authenticated %}
+    <div class="new_post">
+        <h3>New Post</h3>
+        <form id="new_form">
+
+            <textarea class="form-control" id="description"></textarea>
+            <input onclick="post()" type="submit" value="Post" class="btn btn-primary">
+        </form>
+    </div>
+    {% endif %}
+    <div class="content" id="content_card">
+        {% for post in posts %}
+        <div class='card'>
+            <div class='card-body'>
+                <div class='card-title'>
+
+                    <h5><a href='{{ post.user.profile.get_absolute_url }}'>{{ post.user.username }}</a></h5>
+                </div>
+                <div class='description' id='d_{{post.id}}'>
+                    <p class='card-text' id='content_{{post.id}}'>{{ post.description }}</p>
+
+                </div>
+                <div class='card-subtitle mb-2 text-muted'>
+                    <h6>{{ post.format_time }}</h6>
+                </div>
+                {% if post in liked_posts %}
+                <div class='like'>
+                    <p>
+                        {% if request.user.is_authenticated %}
+                        <i onclick="like({{post.id}})" id='like_button{{post.id}}' class='fa fa-heart'> </i> {% else %}
+                        <i id='like_button{{post.id}}' class='fa fa-heart'></i> {% endif %}
+                        <input id='post_id' type="hidden" value="{{post.id}}">
+                        </i>
+                        <i id='numOfLike{{post.id}}'> {{ post.likes.count }}</i>
+                    </p>
+                </div>
+                {% else %}
+                <div class='like'>
+                    <p>
+                        {% if request.user.is_authenticated %}
+                        <i onclick="like({{post.id}})" id='like_button{{post.id}}' class='fa fa-heart-o'></i> {% else %}
+                        <i id='like_button{{post.id}}' class='fa fa-heart-o'></i> {% endif %}
+                        <input id='post_id' type="hidden" value="{{post.id}}">
+                        </i>
+
+                        <i id='numOfLike{{post.id}}'>{{ post.likes.count }}</i>
+                    </p>
+                </div>
+                {% endif %}
+                <div class='button-group' id='btn-gr-{{post.id}}'>
+                    {% if post in user_posts %}
+                    <div class='edit'>
+                        <button onclick="edit({{post.id}})" class='btn btn-secondary mr-3'>Edit</button>
+                    </div>
+                    {% endif %} {% if request.user.is_authenticated %}
+                    <div class='comment'>
+                        <button onclick="list_comments({{post.id}})" class='btn btn-primary mr-3'>Comment</button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class='list-of-comment container' id='cmts_{{post.id}}'></div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+<div style="text-align: center;">
+    {% if is_paginated %} {% if page_obj.has_previous %}
+    <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+    <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a> {% endif %} {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
+    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a> {% elif num > page_obj.number|add:'-3' and page_obj.number|add:'3' > num %}
+    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a> {% endif %} {% endfor %} {% if page_obj.has_next %}
+    <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+    <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a> {% endif %} {% endif %}
+</div>
+{% endblock %}

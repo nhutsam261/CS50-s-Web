@@ -1,0 +1,107 @@
+{% extends "network/layout.html" %} {% block body %}
+<div class="col-xl-8 m-auto order-xl-2 mb-5 mb-xl-0">
+    <div class="card card-profile shadow">
+        <div class="card-body pt-0 pt-md-4">
+            <div class="row">
+                <div class="col">
+                    <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                        <div>
+                            <span class="heading">{{ followers.count }}</span>
+                            <span class="description">Followers</span>
+                            <span class="heading">{{ following.count }}</span>
+                            <span class="description">Following</span>
+                            <span class="heading">{{ posts.count }}</span>
+                            <span class="description">
+                            Posts
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <h3>
+                    {{user.username}}
+                </h3>
+                <p></p>
+                <hr class="my-2"> {% if user.username != request.user.username %}
+                <div class="follow">
+                    {% if user in current_following %}
+                    <small><a onclick="follow_click()" class="btn btn-primary" id="follow_button" href="{% url 'follow' user.id %}">UnFollow</a></small> {% else %}
+                    <small><a onclick="follow_click()" class="btn btn-primary" id="follow_button" href="{% url 'follow' user.id %}">Follow</a></small> {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card-body pt-0 pt-md-4">
+            <div class="row">
+                <div class="col">
+                    <h2> Followers </h2>
+                    {% for user_follower in followers %}
+                    <h5><a href='{{ user_follower.user.profile.get_absolute_url }}'>{{ user_follower.user.username }}</a></h5>
+                    {% endfor %}
+                </div>
+                <div class="col">
+                    <h2> Following </h2>
+                    {% for user_follower in following %}
+                    <h5><a href='{{ user_follower.following_user.profile.get_absolute_url }}'>{{ user_follower.following_user.username }}</a></h5>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="card-body pt-0 pt-md-4">
+            <h2> Posts </h2>
+            {% for post in posts %}
+            <div class='card'>
+                <div class='card-body'>
+                    <div class='card-title'>
+
+                        <h5><a href='{{ post.user.profile.get_absolute_url }}'>{{ post.user.username }}</a></h5>
+                    </div>
+                    <div class='description' id='d_{{post.id}}'>
+                        <p class='card-text' id='content_{{post.id}}'>{{ post.description }}</p>
+
+                    </div>
+                    <div class='card-subtitle mb-2 text-muted'>
+                        <h6>{{ post.format_time }}</h6>
+                    </div>
+                    {% if post in liked_posts %}
+                    <div class='like'>
+                        <p>
+                            <i onclick="like({{post.id}})" id='like_button{{post.id}}' class='fa fa-heart'>
+                            <input id='post_id' type="hidden" value="{{post.id}}">
+                        </i>
+                            <i id='numOfLike{{post.id}}'> {{ post.likes.count }}</i>
+                        </p>
+                    </div>
+                    {% else %}
+                    <div class='like'>
+                        <p>
+                            <i onclick="like({{post.id}})" id='like_button{{post.id}}' class='fa fa-heart-o'>
+                            <input id='post_id' type="hidden" value="{{post.id}}">
+                        </i>
+
+                            <i id='numOfLike{{post.id}}'>{{ post.likes.count }}</i>
+                        </p>
+                    </div>
+                    {% endif %}
+                    <div class='button-group' id='btn-gr-{{post.id}}'>
+                        {% if user.username == request.user.username %}
+                        <div class='edit'>
+                            <button onsubmit="edit({{post.id}});return false;" class='btn btn-secondary mr-3'>Edit</button>
+                        </div>
+                        {% endif %}
+                        <div class='comment'>
+                            <button onclick="list_comments({{post.id}})" class='btn btn-primary mr-3'>Comment</button>
+                        </div>
+                    </div>
+                </div>
+                {% if request.user.is_authenticated %}
+                <div class='list-of-comment container' id='cmts_{{post.id}}'></div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
