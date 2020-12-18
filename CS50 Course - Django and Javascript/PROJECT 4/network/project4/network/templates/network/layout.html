@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+	<link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/bytewalk/profilepage.css">
+	<link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/bytewalk/styles.css">
+	<!-- JS files -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="{% static 'network/index.js' %}"></script>
+
+	{% block jsfiles %}{% endblock jsfiles %}
+	{% block cssfiles %}{% endblock cssfiles %}
+	<title>Social Network</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top mb-3">
+		<a class="navbar-brand ml-4 mr-4" href="{% url 'index' %}"><b>Network</b></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+			aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link" href="{% url 'index' %}">All posts</a>
+				{% if user.is_authenticated %}
+				<a class="nav-item nav-link" href="{{ user.profile.get_absolute_url }}">Profile</a>
+				<a class="nav-item nav-link" href="{% url 'following_posts' %}">Following</a>
+				<a class="nav-item nav-link btn btn-danger ml-4  text-light" href="{% url 'logout' %}">Logout</a>
+				{% else %}
+				<a class="nav-item nav-link btn btn-success ml-4  text-light" href="{% url 'login' %}">Login</a>
+				<a class="nav-item nav-link btn btn-info ml-3  text-light" href="{% url 'register' %}">Register</a>
+				{% endif %}
+				{% block searchform %}{% endblock searchform %}
+			</div>
+		</div>
+		<ul class="nav justify-content-end ">
+			<span class="navbar-text">
+				{% if request.user.is_authenticated %}
+				Signed in as <strong>{{ request.user.username }}</strong>.
+				{% else %}
+				Not signed in.
+				{% endif %}
+			</span>
+		</ul>
+	</nav>
+
+	<div class="edit-container" style="display: none;">
+		<div class="row">
+			<div class="col-9 mx-auto">
+				<div class="card">
+					<div class="card-body">
+						<form id="edit-form">
+							<div class="form-group">
+								<textarea class="form-control" id="edit-content" rows="3"></textarea>
+							</div>
+							<div class="btn-group">
+								<button type="submit" id="save-btn" class="btn btn-primary">Save</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		{% block body %}{% endblock body %}
+	</div>
+
+
+
+</body>
+
+</html>
