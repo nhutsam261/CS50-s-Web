@@ -1,0 +1,56 @@
+{% extends "accounts/layout.html" %} {% load static %}
+
+{% block jsfiles %}
+<script type="text/javascript" src="{% static 'feed/action.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('.like-btn').forEach(button => {
+            button.onclick = function(){
+                like_post(this, event);
+            }
+        })
+    })
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-xs-8 mx-auto">
+        {% for post in posts %}
+        <div class="card card-signin my-5">
+            <div class="card-body">
+                <a href="{{ post.creator.profile.get_absolute_url }}"><img
+                        src="{{ post.creator.profile.image.url }}" class="rounded-circle" width="30" height="30"
+                        alt=""></a>
+                <a class="text-dark" href="{{ post.user_name.profile.get_absolute_url }}">
+                    <b>{{ post.creator}}</b>
+                </a>
+                <br><small class="text-muted">Posted on {{ post.date_posted }}</small>
+                <br><br>
+                <p class="card-text text-dark">{{ post.caption }}</p>
+            </div>
+            <a href="{% url 'post' post.id %}"><img class="card-img-top" src="{{ post.image.url }}" ></a>
+            
+            <div class="card-footer">
+                {% if post not in liked_post %}
+                <button class="btn btn-outline-primary like-btn" id="like-btn-{{ post.id }}" data-post="{{ post.id }}">
+                    <i class="far fa-thumbs-up"></i> Like
+                    <span class="badge badge-light" >{{ post.likes.count }}</span>
+                </button>
+                {% else %}
+                <button class="btn btn-primary like-btn" id="like-btn-{{ post.id }}" data-post="{{ post.id }}">
+                    <i class="far fa-thumbs-up"></i> Like
+                    <span class="badge badge-light" >{{ post.likes.count }}</span>
+                </button>
+                {% endif %}
+                <button class="btn btn-outline-info">
+                    <i class="far fa-comment"></i> Comments
+                    <span class="badge badge-light" >{{ post.comments.count }}</span>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock content %}
