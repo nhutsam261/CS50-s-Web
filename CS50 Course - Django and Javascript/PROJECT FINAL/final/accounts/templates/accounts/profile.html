@@ -40,8 +40,8 @@
                     {% else %}
                     <span class="description">Friends</span>
                     {% endif %}
-                    <span class="heading">0</span>
-                    <span class="description"><a href="#">Listings</a></span>
+                    <span class="heading">{{ u.posts.count }}</span>
+                    <span class="description"><a href="{% url 'user_posts' u.username %}">Posts</a></span>
                   </div>
                 </div>
               </div>

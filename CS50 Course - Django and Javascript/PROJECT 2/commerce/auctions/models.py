@@ -2,9 +2,15 @@ from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db.models import Max
+from django.contrib.auth.models import AbstractUser
+from django.db.models.signals import post_save
+
 
 from django.utils import timezone
 
+
+class User(AbstractUser):
+	pass
 
 
 class Auction(models.Model):
@@ -49,5 +55,15 @@ class Comment(models.Model):
 class Watchlist(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     listings = models.ManyToManyField(Auction, blank=True)
+
+# make a profile as soon as we create the user
+def post_save_user_model_receiver(sender, instance, created, *args, **kwargs):
+	if created:
+		try:
+			Watchlist.objects.create(user=instance)
+		except:
+			pass
+        
+post_save.connect(post_save_user_model_receiver, sender=User)
 
 

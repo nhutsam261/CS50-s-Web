@@ -1,4 +1,4 @@
-{% extends "accounts/layout.html" %} {% load static %} {% load custom_filters %}
+{% extends "auctions/layout.html" %} {% load static %} {% load custom_filters %}
 
 
 {% block cssfiles %}
@@ -58,7 +58,7 @@
                     </div>
                     <small class="text-muted">
                         Created on {{ auction.createdOn }} by 
-                        <a href="{% url 'profile_view' auction.createdBy.profile.slug %}"><b> {{ auction.createdBy.username }}</b></a>
+                        <a href="#"><b> {{ auction.createdBy.username }}</b></a>
                     </small>
                 </div>
             </div>

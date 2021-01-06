@@ -1,13 +1,16 @@
 {% extends "accounts/layout.html" %} {% load static %} {% load crispy_forms_tags %}
-{% block cssfiles %} {% endblock cssfiles %} {% block content %}
+{% load rest_framework %}
+{% block cssfiles %} {% endblock cssfiles %}
+
+{% block content %}
 <br />
 
 {% if messages %}
-  {% for msg in messages %}       
-    <div class="alert alert-success" role="alert">
-      {{msg.message}}
-    </div>
-  {% endfor %}
+{% for msg in messages %}
+<div class="alert alert-success" role="alert">
+  {{msg.message}}
+</div>
+{% endfor %}
 {% endif %}
 
 <div class="container">
@@ -22,25 +25,19 @@
               <br />
               {{ form|crispy }}
             </fieldset>
+            
             <div class="form-group">
-              <button
-                class="btn btn-lg btn-primary btn-block text-uppercase"
-                type="submit"
-              >
-                Login</button
-              ><br /><br />
-              <a
-                class="btn btn-lg btn-warning btn-block text-uppercase"
-                href="{% url 'password_reset' %}"
-                >Forgot Password?</a
-              >
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn-login" type="submit" onclick='tokenAction()'>
+                Login</button><br /><br />
+              <a class="btn btn-lg btn-warning btn-block text-uppercase" href="{% url 'password_reset' %}">Forgot
+                Password?</a>
             </div>
-            <small
-              ><p class="text-center">
+            <small>
+              <p class="text-center">
                 Not registered yet!
                 <a href="{% url 'register' %}"><b>Register Now!</b></a>
-              </p></small
-            >
+              </p>
+            </small>
           </form>
         </div>
       </div>

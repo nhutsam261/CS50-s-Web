@@ -4,7 +4,7 @@ from django.urls import reverse
 # Create your models here.
 
 class Post(models.Model):
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="posts")
     image = models.ImageField(upload_to="post_images", default='default.png')
     caption = models.CharField(max_length=255, blank=True)
     date_posted = models.DateTimeField(auto_now_add=True)

@@ -1,6 +1,18 @@
 from django.forms import ModelForm
-from .models import Auction, Bid, Comment
+from .models import User, Auction, Bid, Comment
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+
+
+
+class UserRegisterForm(UserCreationForm):
+	email = forms.EmailField()
+
+	class Meta:
+		model = User
+		fields = ['username', 'email', 'password1', 'password2']
+
+
 
 class AuctionForm(ModelForm):
     class Meta:

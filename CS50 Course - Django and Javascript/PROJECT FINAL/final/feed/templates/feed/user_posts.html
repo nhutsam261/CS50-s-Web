@@ -22,7 +22,7 @@
                 <a href="{{ post.creator.profile.get_absolute_url }}"><img
                         src="{{ post.creator.profile.image.url }}" class="rounded-circle" width="30" height="30"
                         alt=""></a>
-                <a class="text-dark" href="{{ post.creator.profile.get_absolute_url }}">
+                <a class="text-dark" href="{{ post.user_name.profile.get_absolute_url }}">
                     <b>{{ post.creator}}</b>
                 </a>
                 <br><small class="text-muted">Posted on {{ post.date_posted }}</small>

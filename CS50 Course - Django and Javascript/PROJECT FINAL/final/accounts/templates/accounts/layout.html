@@ -18,13 +18,17 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
+	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
     {% block jsfiles %}{% endblock jsfiles %}
 
     <title>Instado</title>
 </head>
 
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-expand-md navbar-dark bg-dark sticky-top mb-3">
 	  <a class="navbar-brand ml-2 mr-4" href="{% url 'home' %}"><b>Instado</b></a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +38,6 @@
 	    <div class="navbar-nav ml-auto">
 		  {% if user.is_authenticated %}
 		  	<a class="nav-item nav-link mx-sm-auto" href="#" data-toggle="modal" data-target="#modal-create"><i class="fa fa-plus-square fa-lg" style="color: aliceblue;"></i></a>
-			  <a class="nav-item nav-link mx-sm-auto" href="http://localhost:1234"><i class="fas fa-paper-plane fa-lg" style="color: aliceblue;"></i></a>
 			  <a class="nav-item nav-link mx-sm-auto" href="{% url 'users_list' %}"><i class="fa fa-user-plus fa-lg" style="color: aliceblue;"></i></a>	      	
 			<a class="nav-item nav-link mx-sm-auto" href="{% url 'friend_list' %}"><i class="fa fa-user-friends fa-lg" style="color: aliceblue;"></i></a>
 	      	<a class="nav-item nav-link mx-sm-auto" href="{% url 'my_profile' %}">

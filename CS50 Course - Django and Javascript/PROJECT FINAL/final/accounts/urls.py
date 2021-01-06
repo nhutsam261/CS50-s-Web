@@ -3,6 +3,7 @@ from django.contrib.auth import views as auth_views
 
 from . import views
 
+
 # app_name = "accounts"
 
 urlpatterns = [
@@ -13,10 +14,13 @@ urlpatterns = [
     path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='accounts/password_reset_done.html'), name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='accounts/password_reset_confirm.html'), name='password_reset_confirm'),
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='accounts/password_reset_complete.html'), name='password_reset_complete'),
+    
     path('users_list/', views.users_list, name='users_list'),
     path('user/<slug>/', views.profile_view, name='profile_view'),
+    
     path('my-profile/', views.my_profile, name='my_profile'),
     path('edit-profile/', views.edit_profile, name='edit_profile'),
+    
     path('friendlist/', views.friend_list, name='friend_list'),
     path('friend-request/send/<int:id>', views.send_friend_request, name='send_friend_request'),
     path('friend-request/cancel/<int:id>', views.cancel_friend_request, name='cancel_friend_request'),

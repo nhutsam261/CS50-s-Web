@@ -1,4 +1,4 @@
-{% extends "accounts/layout.html" %} {% load static %} {% load custom_filters %}
+{% extends "auctions/layout.html" %} {% load static %} {% load custom_filters %}
 
 {% block cssfiles %}
     <link href="{% static 'auctions/style.css' %}" rel="stylesheet" type="text/css" />
@@ -39,7 +39,7 @@
                     <h5>
                         Winner: 
                         {% with max_bid=max_bids_dict|lookup:auction %}
-                            <a href="{{ max_bid.createdBy.profile.get_absolute_url }}"><b>
+                            <a href="#"><b>
                                 {{ max_bid.createdBy}}
                             </b></a>
                         {% endwith %}
@@ -65,7 +65,7 @@
                     </div>
                     <small class="text-muted">
                         Created on {{ auction.createdOn }} by 
-                        <a href="{% url 'profile_view' auction.createdBy.profile.slug %}"><b> {{ auction.createdBy.username }}</b></a>
+                        <a href="#"><b> {{ auction.createdBy.username }}</b></a>
                     </small>
                 </div>
             </div>

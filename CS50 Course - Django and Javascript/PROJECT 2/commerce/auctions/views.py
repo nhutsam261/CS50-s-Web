@@ -8,12 +8,30 @@ from django.conf import settings
 from .form import AuctionForm, BidForm, CommentForm
 from django.contrib import messages
 
-
+from .form import UserRegisterForm
 from .models import Auction, Bid, Comment, Watchlist
 from django.db.models import Max, Count
 from collections import defaultdict
 
 
+
+def register(request):
+    if request.method == 'POST':
+        f = UserRegisterForm(request.POST)
+        if f.is_valid():
+            f.save()
+            # username = f.cleaned_data['username']
+            messages.success(request, f'Your account has been created! You can now login!')
+            return HttpResponseRedirect(reverse("login"))
+        else:
+            messages.error(request, "Failed to create new account. Please check again the information")
+            return render(request, "auctions/register.html", {
+                "form": f
+            })
+
+    return render(request, "auctions/register.html", {
+        "form": UserRegisterForm()
+    })
 
 
 def index(request):
@@ -130,8 +148,9 @@ def add_to_watchlist(request, num_id):
 def watchlist(request):
     watchlist = Watchlist.objects.filter(user=request.user).first()
     max_bids_dict = {}
-    for auction in watchlist.listings.all():
-       max_bids_dict[auction] = Bid.objects.filter(forAuction=auction).order_by('-price')[0] if Bid.objects.filter(forAuction=auction).order_by('-price') else None
+    if watchlist:
+        for auction in watchlist.listings.all():
+            max_bids_dict[auction] = Bid.objects.filter(forAuction=auction).order_by('-price')[0] if Bid.objects.filter(forAuction=auction).order_by('-price') else None
     
     return render(request, "auctions/watchlist.html", {
        "max_bids_dict": max_bids_dict 
