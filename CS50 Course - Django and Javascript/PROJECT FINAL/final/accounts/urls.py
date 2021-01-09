@@ -1,12 +1,18 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
+from rest_framework.routers import DefaultRouter
 
+from accounts.api import UserModelViewSet, FriendListViewSet
 from . import views
 
 
 # app_name = "accounts"
+router = DefaultRouter()
+router.register(r'user', UserModelViewSet, basename='user-api')
+router.register(r'friendlist', FriendListViewSet, basename='friendlist-api')
 
 urlpatterns = [
+    path(r'api/v1/', include(router.urls)),
     path('register/', views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
