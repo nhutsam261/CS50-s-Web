@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>KAT</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="/Users/zorozed/Projects/web/nhutsam261/project5/KAT/commerce/static/js/jquery-3.5.1.min.js"></script>
+    <script src="/Users/zorozed/Downloads/OwlCarousel/dist/owl.carousel.js"></script>
+    <link rel="stylesheet" href="/Users/zorozed/Projects/web/nhutsam261/slider-bar/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Users/zorozed/Projects/web/nhutsam261/slider-bar/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Users/zorozed/Projects/web/nhutsam261/project5/KAT/commerce/static/css/style_single.css">
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;display=swap">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb-pro.min.css">
+    <!-- Material Design Bootstrap Ecommerce -->
+    <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb.ecommerce.min.css">
+    <!-- Your custom styles (optional) -->
+
+
+    <style type="text/css">
+        /* Chart.js */
+        
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+    <style>
+        .glot-sub-active {
+            color: #1296ba !important;
+        }
+        
+        .glot-sub-hovered {
+            color: #1296ba !important;
+        }
+        
+        .glot-sub-clzz {
+            cursor: pointer;
+        }
+        
+        .glot-sub-clzz:hover {
+            color: #1296ba !important;
+        }
+        
+        #slide-bar-menu {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="menu">
+                <div id="sub-menu">
+                    <div class="logo"><img src="/Users/zorozed/Projects/web/nhutsam261/project5/KAT/commerce/static/imgs/katz.png">
+                    </div>
+
+                    <label for="btn" class="icon">
+                        <span class="fa fa-bars"></span>
+                    </label>
+                    <input class="input-hidden" type="checkbox" id="btn">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li>
+                            <label for="btn-1" class="show">Mac +</label>
+                            <a href="#">Mac <i class="arrow down"></i></a>
+                            <input class="input-hidden" type="checkbox" id="btn-1">
+                            <ul>
+                                <li><a href="#">MacBook Air</a></li>
+                                <li><a href="#">MacBook Pro 13"</a></li>
+                                <li><a href="#">MacBook Pro 16"</a></li>
+                                <li><a href="#">iMac & iMac Pro</a></li>
+                                <li><a href="#">Mac mini & Mac Pro</a></li>
+                                <li>
+                                    <label for="btn-2" class="show">Mac Accessories +</label>
+                                    <a href="#">Mac Accessories <i class="arrow right"></i></a>
+                                    <input class="input-hidden" type="checkbox" id="btn-2">
+                                    <ul>
+                                        <li>
+                                            <label for="btn-3" class="show">Chager & Cable +</label>
+                                            <a href="#">Chager & Cable <i class="arrow right"></i></a>
+                                            <input class="input-hidden" type="checkbox" id="btn-3">
+                                            <ul>
+                                                <li>
+                                                    <a href="#">Chager</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Apple Chager</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Others Brand</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <label for="btn-4" class="show">iPad +</label>
+                            <a href="#">iPad <i class="arrow down"></i></a>
+                            <input class="input-hidden" type="checkbox" id="btn-4">
+                            <ul>
+                                <li>
+                                    <label for="btn-5" class="show">iPad Pro 2020 +</label>
+                                    <a href="#">iPad Pro 2020 <i class="arrow right"></i></a>
+                                    <input class="input-hidden" type="checkbox" id="btn-5">
+                                    <ul>
+                                        <li>
+                                            <a href="#">iPad Pro 11"</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">iPad Pro 12.9"</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">iPad 10.2" 2020</a></li>
+                                <li><a href="#">iPad Mini</a></li>
+                                <li>
+                                    <label for="btn-6" class="show">iPad Accessories +</label>
+                                    <a href="#">iPad Accessories <i class="arrow right"></i></a>
+                                    <input class="input-hidden" type="checkbox" id="btn-6">
+                                    <ul>
+                                        <li>
+                                            <label for="btn-7" class="show">Chager & Cable +</label>
+                                            <a href="#">Chager & Cable <i class="arrow right"></i></a>
+                                            <input class="input-hidden" type="checkbox" id="btn-7">
+                                            <ul>
+                                                <li>
+                                                    <a href="#">Chager</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Cable</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">Keyboard</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Pencil & Accessories</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">HeadPhones</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Battery Backup</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">AppleCare</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <label for="btn-8" class="show">iPhone +</label>
+                            <a href="#">iPhone <i class="arrow down"></i></a>
+                            <input class="input-hidden" type="checkbox" id="btn-8">
+                            <ul>
+                                <li><a href="#">iPhone 12 Pro Max</a></li>
+                                <li><a href="#">iPhone 12 Pro</a></li>
+                                <li><a href="#">iPhone 12</a></li>
+                                <li><a href="#">iPhone 12 Mini</a></li>
+
+                                <li>
+                                    <label for="btn-9" class="show">iPhone Accessories +</label>
+                                    <a href="#">iPad Pro 2020 <i class="arrow right"></i></a>
+                                    <input class="input-hidden" type="checkbox" id="btn-9">
+                                    <ul>
+                                        <li>
+                                            <label for="btn-10" class="show">Chager & Cable +</label>
+                                            <a href="#">Chager & Cable <i class="arrow right"></i></a>
+                                            <input class="input-hidden" type="checkbox" id="btn-10">
+                                            <ul>
+                                                <li>
+                                                    <a href="#">Chager</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Cable</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">HeadPhones</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Battery Backup</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+
+                            </ul>
+                        </li>
+
+                        <li><a href="#">Sale*</a></li>
+                        <li><a href="#">Apple Support</a></li>
+
+                        <li>
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                        </li>
+                        <li>
+                            <div class="cart-contact">
+
+
+
+                                <!-- single info -->
+
+                                <div id="cart-infor" class="nav-info align-items-center cart-infor d-flex justify-content-between mx-lg-6">
+
+                                    <i class="fas fa-shopping-cart fa-shopping-cart-header"></i>
+                                    <span class="amount-of-items">2</span>
+                                </div>
+                                <!-- end of single info -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- shopping cart -->
+
+
+        <div id="cart" class="row cart">
+            <!-- cart item -->
+            <div class="cart-item d-flex justify-content-between text-capitalize">
+                <img src="/Users/zorozed/Projects/web/nhutsam261/project5/KAT/commerce/static/imgs/macbook_bac.jpeg" class="img-fluid rounded-circle" id="item-img" alt="">
+                <div class="item-text">
+
+                    <p id="cart-item-title" class="font-weight-bold mb-0">Macbook 1</p>
+                    <span>$</span>
+                    <span id="cart-item-price" class="cart-item-price" class="mb-0">10.99</span>
+                </div>
+                <a href="#" id='cart-item-remove' class="cart-item-remove">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </div>
+            <!--end of  cart item -->
+            <!-- cart item -->
+            <div class="cart-item d-flex justify-content-between text-capitalize">
+                <img src="/Users/zorozed/Projects/web/nhutsam261/project5/KAT/commerce/static/imgs/macbook_bac.jpeg" class="img-fluid rounded-circle" id="item-img" alt="">
+                <div class="cart-item-text">
+
+                    <p id="cart-item-title" class="font-weight-bold mb-0">Macbook 2</p>
+                    <span>$</span>
+                    <span id="cart-item-price" class="cart-item-price" class="mb-0">10.99</span>
+                </div>
+                <a href="#" id='cart-item-remove' class="cart-item-remove">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </div>
+            <!--end of  cart item -->
+            <!-- cart total -->
+            <div class="cart-total -container d-flex justify-content-around text-capitalize">
+                <h5>total</h5>
+                <h5> $ <strong id="cart-total" class="font-weight-bold">10.00</strong> </h5>
+            </div>
+            <!--end cart total -->
+            <!-- cart buttons -->
+            <div class="cart-buttons-container d-flex justify-content-between">
+                <a href="#" id="clear-cart" class="btn btn-outline-secondary btn-black text-uppercase">clear cart</a>
+                <a href="#" class="btn btn-outline-secondary text-uppercase btn-pink">checkout</a>
+            </div>
+            <!--end of  cart buttons -->
+            <!--  -->
+        </div>
+
+
+        <!-- end shopping cart -->
+
+        <div class="row max-height justify-content-center align-items-center text-center" id="content">
+
+            <div class="col-3 justify-content-center align-items-center center-block" id="filter"><button type="button" class="btn btn-dark justify-content-center" onclick="showFilter()">Filter</button>
+            </div>
+            <div class="col-6 justify-content-center align-items-center center-block" id="title">
+                <h2 style="text-align: center;">Macbook Pro</h2>
+            </div>
+
+            <div class="col-3 sorting justify-content-center align-items-center center-block">
+                <div class="col">
+                    <h6>Sort By</h6>
+                </div>
+                <div class="col">
+                    <select id="sort" onchange="change_country(this.value)" class="custom-select col-lg-6">
+                    <option value="default">Default</option>
+                    <option value="a_z">Name(A - Z)</option> 
+                    <option value="z_a">Name(Z - A)</option>
+                    <option value="price_high">Price(High - Low)</option>
+                    <option value="price_low">Price(Low - High)</option>	
+                    <option value="best">Best selling</option>
+                    				
+                </select>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row" id="container-bar">
+            <div id="slide-bar-menu">
+                <section>
+
+                    <!-- Section: Filters -->
+                    <section>
+
+                        <!-- Section: Condition -->
+                        <section class="mb-4">
+
+                            <h6 class="font-weight-bold mb-3">Condition</h6>
+
+                            <div class="form-check pl-0 mb-3">
+                                <input type="checkbox" class="form-check-input filled-in" id="new">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="new">New</label>
+                            </div>
+                            <div class="form-check pl-0 mb-3">
+                                <input type="checkbox" class="form-check-input filled-in" id="used">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="used">Used</label>
+                            </div>
+
+                        </section>
+                        <!-- Section: Condition -->
+
+
+
+                        <!-- Section: Price -->
+                        <section class="mb-4">
+
+                            <h6 class="font-weight-bold mb-3">Price</h6>
+
+                            <div class="form-check pl-0 mb-3">
+                                <input type="radio" class="form-check-input" id="under25" name="materialExampleRadios">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="under25">Under $25</label>
+                            </div>
+                            <div class="form-check pl-0 mb-3">
+                                <input type="radio" class="form-check-input" id="2550" name="materialExampleRadios">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="2550">$25 to $50</label>
+                            </div>
+                            <div class="form-check pl-0 mb-3">
+                                <input type="radio" class="form-check-input" id="50100" name="materialExampleRadios">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="50100">$50 to $100</label>
+                            </div>
+                            <div class="form-check pl-0 mb-3">
+                                <input type="radio" class="form-check-input" id="100200" name="materialExampleRadios">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="100200">$100 to $200</label>
+                            </div>
+                            <div class="form-check pl-0 mb-3">
+                                <input type="radio" class="form-check-input" id="200above" name="materialExampleRadios">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="200above">$200 & Above</label>
+                            </div>
+                            <form>
+                                <div class="d-flex align-items-center mt-4 pb-1">
+                                    <div class="md-form md-outline my-0">
+                                        <input id="from" type="text" class="form-control mb-0" placeholder="$ Min">
+
+                                    </div>
+                                    <p class="px-2 mb-0 text-muted"> - </p>
+                                    <div class="md-form md-outline my-0">
+                                        <input id="to" type="text" class="form-control mb-0" placeholder="$ Max">
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        </section>
+                        <!-- Section: Price -->
+
+
+
+
+
+                        <!-- Section: Color -->
+                        <section class="mb-4">
+
+                            <h6 class="font-weight-bold mb-3">Color</h6>
+
+                            <div class="btn-group btn-group-toggle btn-color-group d-block mt-n2 ml-n2" data-toggle="buttons">
+                                <label class="btn rounded-circle white border-inset-grey p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                                <label class="btn rounded-circle grey p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                                <label class="btn rounded-circle black p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                                <label class="btn rounded-circle green p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                                <label class="btn rounded-circle blue p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                                <label class="btn rounded-circle purple p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                                <label class="btn rounded-circle yellow p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                                <label class="btn rounded-circle indigo p-3 m-2">
+                <input type="checkbox" checked autocomplete="off">
+              </label>
+                                <label class="btn rounded-circle red p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                                <label class="btn rounded-circle orange p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                            </div>
+
+                        </section>
+                        <!-- Section: Color -->
+
+                    </section>
+
+                    <!-- Section: Filters -->
+
+                </section>
+            </div>
+
+            <div id="id_content">
+                <div id="content" class="row">
+                    <div class="item">
+                        <div id="product-status">
+                            <span class="tag-status">NEW 100%</span>
+                        </div>
+                        <div class="image-products">
+                            <img src="/Users/zorozed/Downloads/images/products/macbook.bg-rm.png" onmouseover="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-2.rm.png'" onmouseout="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-rm.png'" border="0" alt=""
+                            />
+                        </div>
+                        <span class="store-item-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                      </span>
+                        <div class="product-info">
+                            <a class="product-title a">HyperDrive HDMI/VGA 4K 2-in-1</a>
+                            <br/>
+                            <span class="product-price">
+                            <span class="current-price">799,000₫</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div id="product-status">
+                            <span class="tag-status">NEW 100%</span>
+                        </div>
+                        <div class="image-products">
+                            <img src="/Users/zorozed/Downloads/images/products/macbook.bg-rm.png" onmouseover="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-2.rm.png'" onmouseout="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-rm.png'" border="0" alt=""
+                            />
+                        </div>
+                        <span class="store-item-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                      </span>
+                        <div class="product-info">
+                            <a class="product-title a">HyperDrive HDMI/VGA 4K 2-in-1</a>
+                            <br/>
+                            <span class="product-price">
+                            <span class="current-price">799,000₫</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div id="product-status">
+                            <span class="tag-status">NEW 100%</span>
+                        </div>
+                        <div class="image-products">
+                            <img src="/Users/zorozed/Downloads/images/products/macbook.bg-rm.png" onmouseover="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-2.rm.png'" onmouseout="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-rm.png'" border="0" alt=""
+                            />
+                        </div>
+                        <span class="store-item-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                      </span>
+                        <div class="product-info">
+                            <a class="product-title a">HyperDrive HDMI/VGA 4K 2-in-1</a>
+                            <br/>
+                            <span class="product-price">
+                            <span class="current-price">799,000₫</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div id="product-status">
+                            <span class="tag-status">NEW 100%</span>
+                        </div>
+                        <div class="image-products">
+                            <img src="/Users/zorozed/Downloads/images/products/macbook.bg-rm.png" onmouseover="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-2.rm.png'" onmouseout="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-rm.png'" border="0" alt=""
+                            />
+                        </div>
+                        <span class="store-item-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                      </span>
+                        <div class="product-info">
+                            <a class="product-title a">HyperDrive HDMI/VGA 4K 2-in-1</a>
+                            <br/>
+                            <span class="product-price">
+                            <span class="current-price">799,000₫</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div id="product-status">
+                            <span class="tag-status">NEW 100%</span>
+                        </div>
+                        <div class="image-products">
+                            <img src="/Users/zorozed/Downloads/images/products/macbook.bg-rm.png" onmouseover="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-2.rm.png'" onmouseout="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-rm.png'" border="0" alt=""
+                            />
+                        </div>
+                        <span class="store-item-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                      </span>
+                        <div class="product-info">
+                            <a class="product-title a">HyperDrive HDMI/VGA 4K 2-in-1</a>
+                            <br/>
+                            <span class="product-price">
+                            <span class="current-price">799,000₫</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div id="product-status">
+                            <span class="tag-status">NEW 100%</span>
+                        </div>
+                        <div class="image-products">
+                            <img src="/Users/zorozed/Downloads/images/products/macbook.bg-rm.png" onmouseover="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-2.rm.png'" onmouseout="this.src='/Users/zorozed/Downloads/images/products/macbook.bg-rm.png'" border="0" alt=""
+                            />
+                        </div>
+                        <span class="store-item-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                      </span>
+                        <div class="product-info">
+                            <a class="product-title a">HyperDrive HDMI/VGA 4K 2-in-1</a>
+                            <br/>
+                            <span class="product-price">
+                            <span class="current-price">799,000₫</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        let counter = 0
+
+        function showFilter() {
+            var silder_bar_menu = document.querySelector('#slide-bar-menu');
+            var content = document.querySelector('#id_content');
+            if (counter % 2 == 0) {
+                silder_bar_menu.style.display = 'unset';
+                silder_bar_menu.classList.value = 'col-2';
+                content.classList.value = 'col-10';
+                silder_bar_menu.style.border = 'thin solid black';
+            } else {
+                silder_bar_menu.style.display = 'none';
+                silder_bar_menu.classList.value = '';
+                content.classList.value = '';
+            }
+            counter += 1;
+        }
+    </script>
+    <script>
+        (function() {
+            const cartInfo = document.getElementById('cart-infor');
+            const cart = document.getElementById('cart')
+            cartInfo.addEventListener('click', function() {
+                cart.classList.toggle('show-cart');
+                if (cart.style.position == 'relative') {
+                    cart.style.position = "";
+                } else if (matchMedia("(max-width: 900px)").matches) {
+                    cart.style.position = 'relative';
+                }
+
+
+            });
+        })();
+
+        (function() {
+            const cartBtn = document.querySelectorAll(".store-item-icon");
+
+            cartBtn.forEach(function(btn) {
+                btn.addEventListener('click', function(event) {
+                    if (event.target.parentElement.classList.contains("store-item-icon")) {
+
+                        let imageItem = event.target.parentElement.previousElementSibling;
+                        let imagePath = imageItem.src;
+                        let posImage = imagePath.indexOf("img")
+                        let path = imagePath.slice(posImage);
+
+                        const item = {}
+                        item.path = path;
+
+                        let name = event.target.parentElement.parentElement.nextElementSibling.children[0].children[0].textContent;
+                        item.name = name;
+
+                        let price = event.target.parentElement.parentElement.nextElementSibling.children[0].children[1].textContent.slice(1);
+                        item.price = price;
+
+                        console.log(item);
+
+
+                        const cartItem = document.createElement('div');
+                        cartItem.classList.add("cart-item", "d-flex", "justify-content-between", "text-capitalize", "my-3");
+                        cartItem.innerHTML = `<img src=${item.path} class="img-fluid rounded-circle" style="width: 25%; height: auto" id="item-img" alt="">
+                <div class="item-text">
+
+                    <p id="cart-item-title" class="font-weight-bold mb-0">${item.name}</p>
+                    <span>$</span>
+                    <span id="cart-item-price" class="cart-item-price" class="mb-0">${item.price}</span>
+                </div>
+                <a href="#" id='cart-item-remove' class="cart-item-remove">
+                    <i class="fas fa-trash"></i>
+                </a>`
+                        const cart = document.getElementById("cart");
+                        const total = document.querySelector(".cart-total-container");
+                        cart.insertBefore(cartItem, total);
+                        alert("item added");
+                        showTotals();
+
+
+
+                    }
+                })
+            })
+        })();
+
+        function showTotals() {
+            const total = []
+            const items = document.querySelectorAll('.cart-item-price');
+            items.forEach(function(item) {
+                total.push(parseFloat(item.textContent));
+            })
+            const cost = total.reduce(function(total, item) {
+                total += item;
+                return total;
+            }, 0);
+            const finalMoney = cost.toFixed(2);
+            document.getElementById("cart-total").textContent = finalMoney;
+            document.querySelector(".item-total").textContent = finalMoney;
+            document.querySelector("item-count") = total.length;
+        }
+    </script>
+</body>

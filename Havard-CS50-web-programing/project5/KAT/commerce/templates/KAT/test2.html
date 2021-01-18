@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design Bootstrap</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;display=swap">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/bootstrap.min.css">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb-pro.min.css">
+    <!-- Material Design Bootstrap Ecommerce -->
+    <link rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb.ecommerce.min.css">
+    <!-- Your custom styles (optional) -->
+
+    <style>
+        .loader-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            z-index: 998;
+        }
+        
+        .loader-overlay .preloader-wrapper {
+            position: fixed;
+            top: 50%;
+        }
+    </style>
+
+    <style type="text/css">
+        /* Chart.js */
+        
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+    <style>
+        .glot-sub-active {
+            color: #1296ba !important;
+        }
+        
+        .glot-sub-hovered {
+            color: #1296ba !important;
+        }
+        
+        .glot-sub-clzz {
+            cursor: pointer;
+        }
+        
+        .glot-sub-clzz:hover {
+            color: #1296ba !important;
+        }
+        
+        #slide-bar-menu {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="skin-light" aria-busy="true">
+    <!-- Section: Sidebar -->
+    <div class="row">
+        <div class="col-12">
+            aklsdjfkl;asdfjlsk;dfjkl;jfasjl
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-3" id="filter"><button type="button" class="btn btn-dark" onclick="showFilter()">Filter</button>
+        </div>
+        <div class="col-6" id="title">
+            <h2>Title Here</h2>
+        </div>
+        <div class="col-3" id="sort-by-condition">
+
+        </div>
+
+    </div>
+
+    <div class="row" id="container-bar">
+        <div id="slide-bar-menu">
+            <section>
+
+                <!-- Section: Filters -->
+                <section>
+
+                    <h5>Filters</h5>
+
+                    <!-- Section: Condition -->
+                    <section class="mb-4">
+
+                        <h6 class="font-weight-bold mb-3">Condition</h6>
+
+                        <div class="form-check pl-0 mb-3">
+                            <input type="checkbox" class="form-check-input filled-in" id="new">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="new">New</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input type="checkbox" class="form-check-input filled-in" id="used">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="used">Used</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input type="checkbox" class="form-check-input filled-in" id="collectible">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="collectible">Collectible</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3 pb-1">
+                            <input type="checkbox" class="form-check-input filled-in" id="renewed">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="renewed">Renewed</label>
+                        </div>
+
+                    </section>
+                    <!-- Section: Condition -->
+
+                    <!-- Section: Average -->
+                    <section class="mb-4">
+
+                        <h6 class="font-weight-bold mb-3">Avg. Customer Review</h6>
+
+                        <a href="#!">
+                            <ul class="rating">
+                                <li>
+                                    <i class="fas fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="far fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <p class="small text-uppercase card-link-secondary px-2">& Up</p>
+                                </li>
+                            </ul>
+                        </a>
+                        <a href="#!">
+                            <ul class="rating">
+                                <li>
+                                    <i class="fas fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="far fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="far fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <p class="small text-uppercase card-link-secondary px-2">& Up</p>
+                                </li>
+                            </ul>
+                        </a>
+                        <a href="#!">
+                            <ul class="rating">
+                                <li>
+                                    <i class="fas fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="far fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="far fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="far fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <p class="small text-uppercase card-link-secondary px-2">& Up</p>
+                                </li>
+                            </ul>
+                        </a>
+                        <a href="#!">
+                            <ul class="rating">
+                                <li>
+                                    <i class="fas fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="far fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="far fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="far fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <i class="far fa-star fa-sm text-primary"></i>
+                                </li>
+                                <li>
+                                    <p class="small text-uppercase card-link-secondary px-2">& Up</p>
+                                </li>
+                            </ul>
+                        </a>
+
+                    </section>
+                    <!-- Section: Average -->
+
+                    <!-- Section: Price -->
+                    <section class="mb-4">
+
+                        <h6 class="font-weight-bold mb-3">Price</h6>
+
+                        <div class="form-check pl-0 mb-3">
+                            <input type="radio" class="form-check-input" id="under25" name="materialExampleRadios">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="under25">Under $25</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input type="radio" class="form-check-input" id="2550" name="materialExampleRadios">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="2550">$25 to $50</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input type="radio" class="form-check-input" id="50100" name="materialExampleRadios">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="50100">$50 to $100</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input type="radio" class="form-check-input" id="100200" name="materialExampleRadios">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="100200">$100 to $200</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input type="radio" class="form-check-input" id="200above" name="materialExampleRadios">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="200above">$200 & Above</label>
+                        </div>
+                        <form>
+                            <div class="d-flex align-items-center mt-4 pb-1">
+                                <div class="md-form md-outline my-0">
+                                    <input id="from" type="text" class="form-control mb-0">
+                                    <label for="form">$ Min</label>
+                                </div>
+                                <p class="px-2 mb-0 text-muted"> - </p>
+                                <div class="md-form md-outline my-0">
+                                    <input id="to" type="text" class="form-control mb-0">
+                                    <label for="to">$ Max</label>
+                                </div>
+                            </div>
+                        </form>
+
+                    </section>
+                    <!-- Section: Price -->
+
+                    <!-- Section: Price version 2 -->
+                    <section class="mb-4">
+
+                        <h6 class="font-weight-bold mb-3">Price</h6>
+
+                        <div class="slider-price d-flex align-items-center my-4">
+                            <span class="font-weight-normal small text-muted mr-2">$0</span>
+                            <form class="multi-range-field w-100 mb-1">
+                                <input id="multi" class="multi-range" type="range" />
+                            </form>
+                            <span class="font-weight-normal small text-muted ml-2">$100</span>
+                        </div>
+
+                    </section>
+                    <!-- Section: Price version 2 -->
+
+                    <!-- Section: Size -->
+                    <section class="mb-4">
+
+                        <h6 class="font-weight-bold mb-3">Size</h6>
+
+                        <div class="form-check pl-0 mb-3">
+                            <input type="checkbox" class="form-check-input filled-in" id="34">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="34">34</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input type="checkbox" class="form-check-input filled-in" id="36">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="36">36</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input type="checkbox" class="form-check-input filled-in" id="38">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="38">38</label>
+                        </div>
+                        <div class="form-check pl-0 mb-3">
+                            <input type="checkbox" class="form-check-input filled-in" id="40">
+                            <label class="form-check-label small text-uppercase card-link-secondary" for="40">40</label>
+                        </div>
+                        <a class="btn btn-link text-muted p-0" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              More
+            </a>
+                        <div class="collapse pt-3" id="collapseExample">
+                            <div class="form-check pl-0 mb-3">
+                                <input type="checkbox" class="form-check-input filled-in" id="42">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="42">42</label>
+                            </div>
+                            <div class="form-check pl-0 mb-3">
+                                <input type="checkbox" class="form-check-input filled-in" id="44">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="44">44</label>
+                            </div>
+                            <div class="form-check pl-0 mb-3">
+                                <input type="checkbox" class="form-check-input filled-in" id="46">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="46">46</label>
+                            </div>
+                            <div class="form-check pl-0 mb-3">
+                                <input type="checkbox" class="form-check-input filled-in" id="50">
+                                <label class="form-check-label small text-uppercase card-link-secondary" for="50">50</label>
+                            </div>
+                        </div>
+
+                    </section>
+                    <!-- Section: Size -->
+
+                    <!-- Section: Color -->
+                    <section class="mb-4">
+
+                        <h6 class="font-weight-bold mb-3">Color</h6>
+
+                        <div class="btn-group btn-group-toggle btn-color-group d-block mt-n2 ml-n2" data-toggle="buttons">
+                            <label class="btn rounded-circle white border-inset-grey p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                            <label class="btn rounded-circle grey p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                            <label class="btn rounded-circle black p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                            <label class="btn rounded-circle green p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                            <label class="btn rounded-circle blue p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                            <label class="btn rounded-circle purple p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                            <label class="btn rounded-circle yellow p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                            <label class="btn rounded-circle indigo p-3 m-2">
+                <input type="checkbox" checked autocomplete="off">
+              </label>
+                            <label class="btn rounded-circle red p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                            <label class="btn rounded-circle orange p-3 m-2">
+                <input type="checkbox" autocomplete="off">
+              </label>
+                        </div>
+
+                    </section>
+                    <!-- Section: Color -->
+
+                </section>
+
+                <!-- Section: Filters -->
+
+            </section>
+        </div>
+
+        <div id="id_content">
+            dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;dkfljasfl;ksdfklash;fglhsklfhwl;efhk;ehl;fkhal;hkl;
+        </div>
+
+    </div>
+
+
+    <!-- Section: Sidebar -->
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        let counter = 0
+
+        function showFilter() {
+            var silder_bar_menu = document.querySelector('#slide-bar-menu');
+            var content = document.querySelector('#id_content');
+            if (counter % 2 == 0) {
+                silder_bar_menu.style.display = 'unset';
+                silder_bar_menu.classList.value = 'col-3';
+                content.classList.value = 'col-9';
+                silder_bar_menu.style.border = 'thin solid black';
+            } else {
+                silder_bar_menu.style.display = 'none';
+                silder_bar_menu.classList.value = '';
+                content.classList.value = '';
+            }
+            counter += 1;
+        }
+    </script>
+</body>
